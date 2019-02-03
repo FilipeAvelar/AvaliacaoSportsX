@@ -8,17 +8,46 @@
 
 <script type="text/javascript" src="~/Scripts/jquery-1.12.4.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="~/Scripts/inputmask/inputmask.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.maskedinput.js"></script>
 
 @{
-    <script>
-        $(document).ready(function ()
+    <script type="text/javascript">
+        $(document).ready(function ($)
         {
-            $("#fone").inputmask("mask", { "mask": "(99) 9999-99999" });
-            $("#cep").inputmask("mask", { "mask": "99999-999" });
+            $('#tel').mask("(99) 9999-99999");
+            $('#tel2').mask("(99) 9999-99999");
+            $('#tel3').mask("(99) 9999-99999");
+            $('#cep').mask("99999-999");
+            $('#Data').mask("99/99/9999");
 
     });
     </script>
 }
+
+@{
+    <script type="text/javascript">
+        $(document).ready(function CalculoDesconto() {
+            var pontos = document.getElementById("Pontos").value;
+
+            if (pontos <= 300) {
+                var result = 3;
+                $('#Desconto').val(result);
+            }
+
+            if (pontos > 300 && pontos <= 1000) {
+                var result = 5;
+                $('#Desconto').val(result);
+            }
+
+            if (pontos > 1000) {
+                var result = 10;
+                $('#Desconto').val(result);
+            }
+        });
+     </script>
+
+}
+
 @{
     List<SelectListItem> TiposPessoa = new List<SelectListItem>();
     TiposPessoa.Add(new SelectListItem
@@ -56,25 +85,6 @@
         Selected = true
     });
 }
-
-
-@*@{if (Model.Pontos != 0)
-        {
-            if (Model.Pontos <= 300)
-            {
-                Model.Desconto = 3;
-            }
-            if (Model.Pontos >= 300 && Model.Pontos < 1000)
-            {
-                Model.Desconto = 5;
-            }
-            if (Model.Pontos > 1000)
-            {
-                Model.Desconto = 10;
-            }
-        }
-
-    }*@
 
 @using (Html.BeginForm())
 {
@@ -126,7 +136,7 @@
         <div class="form-group">
             @Html.Label("Cep", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Cep, new { @class = "form-control", @id = "cep" })
                 @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -157,7 +167,7 @@
         <div class="form-group">
             @Html.Label("Tel.Fixo", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.TelFixo, new { htmlAttributes = new { @class = "form-control", @id = "TelFixo", style = "width:350px" } })
+                @Html.TextBoxFor(model => model.TelFixo, new { @class = "form-control", @id = "tel", style = "width:350px" })
                 @Html.ValidationMessageFor(model => model.TelFixo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -165,7 +175,7 @@
         <div class="form-group">
             @Html.Label("Tel.Celular", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.TelCelular, new { htmlAttributes = new { @class = "form-control", @id = "fone", style = "width:350px" } })
+                @Html.TextBoxFor(model => model.TelCelular, new { @class = "form-control", @id = "tel2", style = "width:350px" })
                 @Html.ValidationMessageFor(model => model.TelCelular, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -173,7 +183,7 @@
         <div class="form-group">
             @Html.Label("Tel.Celular 2", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.TelCelular2, new { htmlAttributes = new { @class = "form-control", @id = "fone", style = "width:350px" } })
+                @Html.TextBoxFor(model => model.TelCelular2, new { @class = "form-control", @id = "tel3", style = "width:350px" })
                 @Html.ValidationMessageFor(model => model.TelCelular2, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -189,7 +199,7 @@
         <div class="form-group">
             @Html.Label("Desconto", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Desconto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Desconto, new { @class = "form-control", @id = "Desconto"})
                 @Html.ValidationMessageFor(model => model.Desconto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -198,7 +208,7 @@
             @Html.Label("Data", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger", @id = "Data", })
             </div>
         </div>
 

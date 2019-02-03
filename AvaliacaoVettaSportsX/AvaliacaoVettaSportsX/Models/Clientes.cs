@@ -23,7 +23,9 @@ namespace AvaliacaoVettaSportX.Models
 
         public string Endereco { get; set; }
 
-        [Required]
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "O email é obrigatório")]
+        [EmailAddress(ErrorMessage = "Email Inválido")]
         public string Email { get; set; }
 
         public string Classificacao { get; set; }
