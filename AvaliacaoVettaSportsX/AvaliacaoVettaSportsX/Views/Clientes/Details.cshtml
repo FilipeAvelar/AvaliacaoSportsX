@@ -1,0 +1,130 @@
+﻿@model AvaliacaoVettaSportX.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes do Cliente</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Nome")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCliente)
+        </dd>
+
+        <dt>
+            @Html.Label("Razão Social")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+
+        <dt>
+            @Html.Label("Tipo Pessoa")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPessoa)
+        </dd>
+
+        <dt>
+            @Html.Label("Cpf/Cnpj")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CpfCnpj)
+        </dd>
+
+        <dt>
+            @Html.Label("Cep")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+
+        <dt>
+            @Html.Label("Endereco")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.Label("Email")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.Label("Classificação")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classificacao)
+        </dd>
+
+        <dt>
+            @Html.Label("Tel.Fixo")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelFixo)
+        </dd>
+
+        <dt>
+            @Html.Label("Tel.Celular")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelCelular)
+        </dd>
+
+        <dt>
+            @Html.Label("Tel.Celular 2")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelCelular2)
+        </dd>
+
+        <dt>
+            @Html.Label("Pontos")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pontos)
+        </dd>
+
+        <dt>
+            @Html.Label("Desconto")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desconto)
+        </dd>
+
+        <dt>
+            @Html.Label("Data")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IDcliente }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
+</p>

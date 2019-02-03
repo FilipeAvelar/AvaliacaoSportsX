@@ -1,0 +1,100 @@
+﻿@model IEnumerable<AvaliacaoVettaSportX.Models.Cliente>
+
+@{
+    ViewBag.Title = "Lista de Clientes";
+}
+
+<h2>Cadastro de Clientes</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Novo Cliente", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Razão Social
+        </th>
+        <th>
+            Tipo Pessoa
+        </th>
+        <th>
+            CPF/CNPJ
+        </th>
+        <th>
+            Cep
+        </th>
+        <th>
+            Endereço
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Classificação
+        </th>
+        <th>
+            Tel. Fixo
+        </th>
+        <th>
+            Tel. Celular
+        </th>
+        <th>
+            Tel. Celular 2
+        </th>
+        <th>
+            Pontos
+        </th>
+        <th>
+            Desconto
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazaoSocial)
+            </td>
+            <td>
+                )
+                @Html.DisplayFor(modelItem => item.TipoPessoa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CpfCnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classificacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelFixo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelCelular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelCelular2)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IDcliente }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.IDcliente }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.IDcliente })
+            </td>
+        </tr>
+    }
+</table>
